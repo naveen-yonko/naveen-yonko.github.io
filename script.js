@@ -364,3 +364,49 @@ window.addEventListener('load', () => {
 // ===========================
 console.log('%cNaveen M - Portfolio', 'color: #00f5ff; font-size: 18px; font-weight: bold;');
 console.log('%cFull Stack Developer | B.Tech IT Student', 'color: #9d4edd; font-size: 12px;');
+
+// ===========================
+// CERTIFICATE MODAL FUNCTIONS
+// ===========================
+function openCertificateModal(element) {
+    const certPath = element.getAttribute('data-cert');
+    const certTitle = element.querySelector('h4').textContent;
+    
+    const modal = document.getElementById('certificateModal');
+    const iframeViewer = document.getElementById('certPdfViewer');
+    const downloadBtn = document.getElementById('certDownloadBtn');
+    const titleElement = document.getElementById('certModalTitle');
+    
+    // Set modal title
+    titleElement.textContent = certTitle;
+    
+    // Set iframe src to display PDF
+    iframeViewer.src = certPath;
+    
+    // Set download button
+    downloadBtn.href = certPath;
+    downloadBtn.download = certTitle + '.pdf';
+    
+    // Show modal with animation
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
+function closeCertificateModal() {
+    const modal = document.getElementById('certificateModal');
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.getElementById('certPdfViewer').src = '';
+    }, 300);
+}
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('certificateModal');
+    if (event.target === modal) {
+        closeCertificateModal();
+    }
+});

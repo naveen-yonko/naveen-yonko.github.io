@@ -227,13 +227,13 @@ Feel free to fork this project and customize it for your own use!
 
 ## 📄 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source 
 
 ## 👨‍💻 Author
 
 **Naveen M**
 - Email: naveen2992005@gmail.com
-- GitHub: [@yourusername](https://github.com/yourusername)
+- GitHub: [@naveen-yonko](https://github.com/naveen-yonko)
 - LinkedIn: [Naveen M](https://linkedin.com/in/yourusername)
 
 ## 🙏 Acknowledgments
