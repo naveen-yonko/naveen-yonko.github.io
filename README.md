@@ -23,7 +23,7 @@ A modern, responsive portfolio website featuring a unique **Terminal-Hacker × D
 - **Project Cards**: 3D tilt effect on hover
 - **Contact Form**: Integrated email functionality
 - **Scroll Progress**: Auto-highlighting navigation based on scroll position
-- **Easter Egg**: Hidden Konami Code surprise 🎮
+- **Certificate Viewer Modal**: Click on certificates to view and download PDFs
 - **Back to Top Button**: Smooth scroll to top functionality
 
 ### 📱 Sections
@@ -32,7 +32,7 @@ A modern, responsive portfolio website featuring a unique **Terminal-Hacker × D
 3. **Education**: Timeline visualization
 4. **Projects**: 4 featured projects with tech stack tags
 5. **Skills**: Animated progress bars for technical skills
-6. **Certifications**: Achievement showcase
+6. **Certificates**: Interactive certificate cards with modal viewer (click to view PDFs)
 7. **Contact**: Interactive form with multiple contact methods
 
 ## 🚀 Quick Start
@@ -49,25 +49,6 @@ A modern, responsive portfolio website featuring a unique **Terminal-Hacker × D
    cd portfolio
    ```
 
-2. **Open in Browser**
-   - Simply open `index.html` in your web browser
-   - Or use a local server (recommended):
-   
-   **Using Python:**
-   ```bash
-   python -m http.server 8000
-   ```
-   Then visit: `http://localhost:8000`
-   
-   **Using Node.js:**
-   ```bash
-   npx http-server
-   ```
-
-3. **Or Use VS Code Live Server**
-   - Install "Live Server" extension
-   - Right-click on `index.html`
-   - Select "Open with Live Server"
 
 ## 📝 Customization
 
@@ -86,7 +67,17 @@ A modern, responsive portfolio website featuring a unique **Terminal-Hacker × D
    - Find `.skill-item` sections
    - Modify skill names and adjust `data-progress` values (0-100)
 
-4. **Theme Colors** (in `styles.css`):
+4. **Certificates** (in `index.html`):
+   - Add your certificate PDFs to the `certificates/` folder
+   - Update certificate cards with your certificate names
+   - Update the `data-cert` attribute with the correct file path
+   ```html
+   <div class="cert-card" data-cert="certificates/your-certificate.pdf" onclick="openCertificateModal(this)">
+       <h4>Your Certificate Name</h4>
+   </div>
+   ```
+
+5. **Theme Colors** (in `styles.css`):
    - Modify CSS variables in `:root` section:
    ```css
    :root {
@@ -158,68 +149,64 @@ In `script.js`, comment out or remove the particle.js initialization:
 
 ```
 portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All styles and animations
-├── script.js           # JavaScript functionality
-├── README.md           # This file
-└── NAVEEN RESUME.pdf   # Your resume (optional)
+├── index.html                    # Main HTML file
+├── styles.css                    # All styles and animations
+├── script.js                     # JavaScript functionality
+├── README.md                     # This file
+├── NAVEEN RESUME.pdf             # Your resume
+└── certificates/                 # Certificate PDFs folder
+    ├── AWS Certified AI Practitioner certificate.pdf
+    ├── Data Analytics with Python.pdf
+    └── Foundations of R Software.pdf
 ```
 
 ## 🌐 Deployment
 
-### GitHub Pages (Free)
+### GitHub Pages (Free & Already Live!)
 
-1. Create a GitHub repository
+This portfolio is already deployed at: **https://naveen-yonko.github.io**
+
+**To deploy your own version:**
+
+1. Create a GitHub repository named `yourusername.github.io`
 2. Push your code:
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/yourusername/portfolio.git
+   git remote add origin https://github.com/yourusername/yourusername.github.io.git
    git push -u origin main
    ```
-3. Go to repository **Settings** → **Pages**
-4. Select **main** branch → **Save**
-5. Your site will be live at: `https://yourusername.github.io/portfolio`
+3. Your site will be live in 1-2 minutes at: `https://yourusername.github.io`
 
-### Netlify (Free)
+### Vercel (Alternative - Also Free!)
 
-1. Go to [Netlify](https://www.netlify.com/)
-2. Drag and drop your project folder
-3. Done! You'll get a URL like: `https://random-name.netlify.app`
+1. Push code to GitHub
+2. Visit [vercel.com](https://vercel.com) and import your repository
+3. Deploy with one click
 
-### Vercel (Free)
 
-1. Install Vercel CLI: `npm install -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
-4. Your site will be deployed instantly
 
-## 🎮 Easter Eggs
-
-Try the **Konami Code** on your keyboard:
-```
-↑ ↑ ↓ ↓ ← → ← → B A
-```
-
-Check the browser console for hidden messages! 👀
 
 ## 🛠️ Built With
 
-- **HTML5** - Structure
-- **CSS3** - Styling and animations
-- **JavaScript** - Interactivity
-- **Particles.js** - Background particle effects
-- **Font Awesome** - Icons
+- **HTML5** - Semantic structure and modern markup
+- **CSS3** - Advanced animations, gradients, and responsive design
+- **JavaScript** - DOM manipulation and interactivity
+- **Particles.js** - Stunning background particle effects
+- **Font Awesome** - Beautiful icon library
 
-## 📱 Browser Support
+## 📋 Features Checklist
 
-- ✅ Chrome (latest)
-- ✅ Firefox (latest)
-- ✅ Safari (latest)
-- ✅ Edge (latest)
-- ✅ Mobile browsers
+- ✅ Fully responsive design (mobile, tablet, desktop)
+- ✅ No dependencies required (pure HTML/CSS/JS + CDN libraries)
+- ✅ Interactive certificate viewer with PDF support
+- ✅ Smooth animations and transitions
+- ✅ Terminal/Hacker aesthetic theme
+- ✅ Dark mode by default (modern design)
+- ✅ Fast loading and performance optimized
+- ✅ SEO friendly with meta tags
 
 ## 🤝 Contributing
 
@@ -231,33 +218,29 @@ This project is open source
 
 ## 👨‍💻 Author
 
-**Naveen M**
-- Email: naveen2992005@gmail.com
-- GitHub: [@naveen-yonko](https://github.com/naveen-yonko)
-- LinkedIn: [Naveen M](https://linkedin.com/in/yourusername)
+**Naveen M** - Full Stack Developer
+- 🎓 B.Tech IT Student
+- 📧 Email: naveen2992005@gmail.com
+- 🐙 GitHub: [@naveen-yonko](https://github.com/naveen-yonko)
+- 💼 LinkedIn: [Naveen M](https://linkedin.com/in/naveen m)
+- 🎯 LeetCode: [@naveenyonko](https://leetcode.com/u/naveenyonko/)
 
-## 🙏 Acknowledgments
+## 📞 Support & Contact
 
-- Inspired by terminal/hacker aesthetics
-- Anime tech UI design elements
-- Minimalist design principles
-- Particle.js for amazing background effects
+For questions, suggestions, or collaboration opportunities:
+- **Email**: naveen2992005@gmail.com
+- **GitHub**: [github.com/naveen-yonko](https://github.com/naveen-yonko)
 
----
+## ⭐ Show Your Support
 
-### 📝 Quick Checklist Before Deployment
-
-- [ ] Update all personal information (name, email, phone)
-- [ ] Add your GitHub and LinkedIn URLs
-- [ ] Update project details and links
-- [ ] Add your profile image
-- [ ] Test on mobile devices
-- [ ] Check all links work
-- [ ] Test contact form
-- [ ] Review all content for accuracy
-- [ ] Optimize images (if added)
-- [ ] Test in different browsers
+If you find this portfolio template useful, please consider:
+- ⭐ Starring this repository
+- 🔄 Sharing it with others
+- 🐛 Reporting issues or suggesting improvements
 
 ---
 
-Made with 💜 and lots of ☕ | © 2026 Naveen M
+**Inspired by terminal/hacker aesthetics, anime tech UI design, and minimalist principles**
+
+**Made with 💜 and lots of ☕**  
+© 2026 Naveen M | Full Stack Developer
