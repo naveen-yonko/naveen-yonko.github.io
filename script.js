@@ -248,8 +248,17 @@ if (contactForm) {
         // Open email client
         window.location.href = mailtoLink;
         
-        // Show a hint in case the mail app is not configured
-        showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+        // Fallback: copy the message if mail app does not open
+        const fallbackMessage = `To: naveen2992005@gmail.com\nSubject: ${formData.subject}\n\n${body}`;
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(fallbackMessage).then(() => {
+                showNotification('Opening your email client. Message copied as fallback.', 'info');
+            }).catch(() => {
+                showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+            });
+        } else {
+            showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+        }
         
         // Reset form
         contactForm.reset();
@@ -264,7 +273,17 @@ mailtoLinks.forEach(link => {
         if (mailtoHref) {
             window.location.href = mailtoHref;
         }
-        showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+
+        const fallbackText = 'naveen2992005@gmail.com';
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(fallbackText).then(() => {
+                showNotification('Opening your email client. Email copied as fallback.', 'info');
+            }).catch(() => {
+                showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+            });
+        } else {
+            showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+        }
     });
 });
 
