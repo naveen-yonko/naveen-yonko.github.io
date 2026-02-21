@@ -229,33 +229,43 @@ scrollTopBtn.addEventListener('click', () => {
 // ===========================
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        subject: document.getElementById('subject').value,
-        message: document.getElementById('message').value
-    };
-    
-    // In a real application, you would send this data to a server
-    // For now, we'll just show a success message
-    
-    // Create mailto link as fallback
-    const mailtoLink = `mailto:naveen2992005@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `From: ${formData.name} (${formData.email})\n\n${formData.message}`
-    )}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    showNotification('Message sent! Opening your email client...', 'success');
-    
-    // Reset form
-    contactForm.reset();
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value
+        };
+        
+        // Create mailto link so the user's mail app opens with their content
+        const body = `From: ${formData.name} (${formData.email})\r\n\r\n${formData.message}`;
+        const mailtoLink = `mailto:naveen2992005@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(body)}`;
+        
+        // Open email client
+        window.location.href = mailtoLink;
+        
+        // Show a hint in case the mail app is not configured
+        showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+        
+        // Reset form
+        contactForm.reset();
+    });
+}
+
+const mailtoLinks = document.querySelectorAll('.mailto-link');
+mailtoLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const mailtoHref = link.getAttribute('href');
+        if (mailtoHref) {
+            window.location.href = mailtoHref;
+        }
+        showNotification('Opening your email client. Set a default mail app if needed.', 'info');
+    });
 });
 
 // ===========================
